@@ -1,21 +1,14 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+const { MongoClient } = require('mongodb');
+require('dotenv').config(); // dotenv use karo
 
-app.use(express.json());
+const url = process.env.MONGO_URL; // .env se lo
+const dbName = 'giftdb'; // database ka naam giftdb ho
 
-// Yaha pe searchRoutes ko import karna hai
-const searchRoutes = require('./searchRoutes'); // agar root me hai
-// const searchRoutes = require('./routes/searchRoutes'); // agar routes folder me hai
-app.use('/', searchRoutes);
+let client;
 
-// Ye line important hai Q7 ke liye 👇
-app.get('/api/search', (req, res) => {
-  res.json({ message: "Search route working" });
-});
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-
-module.exports = app;
+async function connectToDatabase() {
+    client = new MongoClient(url);
+    await client.connect(); // ye line zaroori hai
+    console.log('Connected to MongoDB');
+    return client.db(dbName);
+}
