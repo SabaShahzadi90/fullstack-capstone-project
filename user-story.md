@@ -1,25 +1,15 @@
-# User Stories for Fullstack Capstone Project
+# User Story
 
-## User Story 1
-As a **new user**, I want to **register an account** so that **I can access the application**.
+## As a user
+I need to register an account 
+so that I can log in and use the capstone project.
 
-## User Story 2  
-As a **registered user**, I want to **login with email and password** so that **I can use my account**.
+## Details and Assumptions
+- Username must be unique
+- Password must be at least 6 characters
+- User will receive a success message after registration
 
-## User Story 3
-As a **user**, I want to **view all products on the landing page** so that **I can browse available items**.
-
-## User Story 4
-As a **user**, I want to **search products by category** so that **I can find items quickly**.
-
-## User Story 5
-As a **user**, I want to **view product details** so that **I can see price and description**.
-
-## User Story 6
-As a **user**, I want to **add products to cart** so that **I can purchase them later**.
-
-## User Story 7
-As a **user**, I want to **see my order history** so that **I can track my past orders**.
-
-## User Story 8
-As an **admin**, I want to **add new products** so that **users can see new items**.
+## Acceptance Criteria
+Given the registration page is open
+When I enter a valid username and password and click Register
+Then I should see "User registered successfully" message
