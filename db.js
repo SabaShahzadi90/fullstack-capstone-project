@@ -1,11 +1,14 @@
 const { MongoClient } = require('mongodb');
-const url = 'mongodb://localhost:27017';
-const client = new MongoClient(url);
+require('dotenv').config(); // dotenv use karo
+
+const url = process.env.MONGO_URL; // .env se lo
+const dbName = 'giftdb'; // database ka naam giftdb ho
+
+let client;
 
 async function connectToDatabase() {
-  await client.connect(); // <-- ye line chahiye Q4 me
-  console.log("Connected to MongoDB");
-  return client.db("capstone");
+    client = new MongoClient(url);
+    await client.connect(); // ye line zaroori hai
+    console.log('Connected to MongoDB');
+    return client.db(dbName);
 }
-
-module.exports = connectToDatabase;
